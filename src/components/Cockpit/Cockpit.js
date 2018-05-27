@@ -26,6 +26,8 @@ const cockpit = (props) => {
             <p className={assignedClasses.join(' ')} >Teste Teste Teste</p>
             <button className={btnClass}
                     onClick={props.clicked}>Switch Name</button>
+            
+            <button onClick={props.login}>Log in</button>
         </Aux>
     );
 }

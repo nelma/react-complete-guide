@@ -1,24 +1,38 @@
-import React from 'react';
-
+import React, {Component} from 'react';
 import classes from './Person.css'
 
+import withClass from '../../../hoc/withClass';
+import Aux from '../../../hoc/Aux';
 
-const person = (props) => {
-    //return <p>Person name is {props.name} and age {props.age} </p>
 
-    const style = {
-        '@media (min-width: 500px)': {
-            width: '45px'
-        }
+class Person extends Component {
+
+    constructor(props) {
+        super( props );
+        console.log( '[Person.js] Inside Constructor', props );
     }
 
-    return (
-        <div className={classes.Person}>
-            <p onClick={props.click}>Person name is = {props.name} and age = {props.age} </p>
-            <p>ttt{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
-        </div>
-    )
+    componentWillMount () {
+        console.log( '[Person.js] Inside componentWillMount()' );
+    }
+
+    componentDidMount () {
+        console.log( '[Person.js] Inside componentDidMount()' );
+    }
+
+    render() {
+        console.log( '[Person.js] Inside render()' );
+
+        return (
+            <Aux>
+                <p onClick={this.props.click}>
+                    Person name is = {this.props.name} and age = {this.props.age} </p>
+                <p>ttt{this.props.children}</p>
+
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </Aux>
+        )
+    };
 }
 
-export default person;
+export default withClass(Person, classes.Person);
